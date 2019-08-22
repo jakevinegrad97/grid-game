@@ -4,17 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class Square {
 
 	private int x;
 	private int y;
-	public int number;
-	
-	public Square(int x, int y, int number) {
-		this.x = x;
-		this.y = y;
-		this.number = number;
-	}
 	
 	public void up() {
 		y--;

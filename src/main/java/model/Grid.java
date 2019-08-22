@@ -8,25 +8,35 @@ import lombok.Data;
 @Data
 public class Grid {
 
-	private final int size;
+	private final int size, numberOfVillains;
 	private List<Square> squares;
 	private Square marker;
 	private List<Square> villains;
 	
 	{
 		squares = new ArrayList<>();
-		marker = new Square(1, 1, 0);
+		marker = new Square(1, 1);
 		
 	}
 	
-	public Grid(int size) {
+	public Grid(int size, int numberOfVillains) {
 		this.size = size;
+		this.numberOfVillains = numberOfVillains;
 		for(int i = 1; i <= size; i++) {
 			for(int j = 1; j <= size; j++) {
-				squares.add(new Square(i, j, 100));
+				squares.add(new Square(i, j));
 			}
 		}
-		villains = List.of(new Square(size, size, 1),  new Square(1, size, 2), new Square(size, 1, 3));
+		villains = new ArrayList<>();
+		for(int i = 0; i < numberOfVillains; i++) {
+			int x = (int) (3 + (size - 3) * Math.random());
+			int y = (int) (3 + (size - 3) * Math.random());
+			while(x % 2 == 0 || y % 2 == 0) {
+				x = (int) (3 + (size - 3) * Math.random());
+				y = (int) (3 + (size - 3) * Math.random());
+			}
+			villains.add(new Square(x, y));
+		}
 	}
 	
 	public void out() {

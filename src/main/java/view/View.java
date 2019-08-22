@@ -14,11 +14,13 @@ public class View {
 	public static final Logger LOGGER = Logger.getLogger(View.class);
 	
 	public static final int SIZE = 7;
+	
+	public static final int numberOfEnemies = 7;
 
 	public static void main(String[] args) throws InterruptedException {
 		List<String> possibleCommands;
 		Scanner scanner = new Scanner(System.in);
-		Grid grid = new Grid(SIZE);
+		Grid grid = new Grid(SIZE, numberOfEnemies);
 		int score = 0;
 		while (true) {
 			
@@ -43,12 +45,6 @@ public class View {
 
 			command(user, commandUser);
 
-			LOGGER.info("Round: " + score);
-			LOGGER.info("USER: " + user.getX() + " : " + user.getY());
-			for(Square villain : villains) {
-				LOGGER.info(villain.getNumber() + ": " + villain.getX() + " : " + villain.getY());
-			}
-			
 			boolean isCaught = isCaught(user, villains);
 			if (isCaught) {
 				grid.out();
