@@ -15,7 +15,7 @@ public class View {
 	
 	public static final int SIZE = 7;
 	
-	public static final int numberOfEnemies = 7;
+	public static final int numberOfEnemies = 3;
 
 	public static void main(String[] args) throws InterruptedException {
 		List<String> possibleCommands;
@@ -50,6 +50,7 @@ public class View {
 				grid.out();
 				Thread.sleep(3000);
 				System.err.println("You lose!\n");
+				Thread.sleep(1000);
 				System.out.println("\nScore: " + score);
 				break;
 			}
@@ -58,6 +59,7 @@ public class View {
 				grid.out();
 				Thread.sleep(3000);
 				System.out.println("You win!\n");
+				Thread.sleep(1000);
 				System.out.println("\nScore: " + score);
 				break;
 			}

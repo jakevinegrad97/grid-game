@@ -29,11 +29,11 @@ public class Grid {
 		}
 		villains = new ArrayList<>();
 		for(int i = 0; i < numberOfVillains; i++) {
-			int x = (int) (3 + (size - 3) * Math.random());
-			int y = (int) (3 + (size - 3) * Math.random());
+			int x = (int) Math.ceil((3 + (size - 3) * Math.random()));
+			int y = (int) Math.ceil((3 + (size - 3) * Math.random()));
 			while(x % 2 == 0 || y % 2 == 0) {
-				x = (int) (3 + (size - 3) * Math.random());
-				y = (int) (3 + (size - 3) * Math.random());
+				x = (int) Math.ceil((3 + (size - 3) * Math.random()));
+				y = (int) Math.ceil((3 + (size - 3) * Math.random()));
 			}
 			villains.add(new Square(x, y));
 		}
@@ -48,8 +48,9 @@ public class Grid {
 		for(int i = 1; i <= size; i++) {
 			String line = "|";
 			for(int j = 1; j <= size; j++) {
-				if(isVillain(villains, i, j)) {
-					line += "x|";
+				String isVillain = isVillain(villains, i, j);
+				if(isVillain != null) {
+					line += isVillain;
 				} else if(i == marker.getY() && j == marker.getX()) {
 					line += "o|";
 				} else if(i == size && j == size) {
@@ -63,14 +64,21 @@ public class Grid {
 		System.out.println(result);
 	}
 
-	private boolean isVillain(List<Square> villains2, int i, int j) {
+	private String isVillain(List<Square> villains2, int i, int j) {
 		boolean result = false;
+		int number = 0;
 		for(Square villain : villains) {
 			if(villain.getX() == j && villain.getY() == i) {
-				result = true;
+				number += 1;
 			}
 		}
-		return result;
+		if(number > 1) {
+			return number + "|";
+		} else if (number == 1) {
+			return "x|";
+		} else {
+			return null;
+		}
 	}
 	
 }
