@@ -24,7 +24,6 @@ public class View {
 		int score = 0;
 		while (true) {
 			
-			
 			System.out.println("\nScore: " + score + "\n");
 			grid.out();
 			Square user = grid.getMarker();

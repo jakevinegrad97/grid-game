@@ -29,11 +29,11 @@ public class Grid {
 		}
 		villains = new ArrayList<>();
 		for(int i = 0; i < numberOfVillains; i++) {
-			int x = (int) Math.ceil((3 + (size - 3) * Math.random()));
-			int y = (int) Math.ceil((3 + (size - 3) * Math.random()));
+			int x = (int) (3 + (size - 3) * Math.random());
+			int y = (int) (3 + (size - 3) * Math.random());
 			while(x % 2 == 0 || y % 2 == 0) {
-				x = (int) Math.ceil((3 + (size - 3) * Math.random()));
-				y = (int) Math.ceil((3 + (size - 3) * Math.random()));
+				x = (int) (3 + (size - 3) * Math.random());
+				y = (int) (3 + (size - 3) * Math.random());
 			}
 			villains.add(new Square(x, y));
 		}
