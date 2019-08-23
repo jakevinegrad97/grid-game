@@ -72,7 +72,9 @@ public class Grid {
 				number += 1;
 			}
 		}
-		if(number > 1) {
+		if(number > 9) {
+			return "+|";
+		} else if(number > 1) {
 			return number + "|";
 		} else if (number == 1) {
 			return "x|";

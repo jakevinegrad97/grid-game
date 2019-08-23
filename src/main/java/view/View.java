@@ -13,9 +13,9 @@ public class View {
 
 	public static final Logger LOGGER = Logger.getLogger(View.class);
 	
-	public static final int SIZE = 7;
+	public static final int SIZE = 13;
 	
-	public static final int numberOfEnemies = 3;
+	public static final int numberOfEnemies = 5;
 
 	public static void main(String[] args) throws InterruptedException {
 		List<String> possibleCommands;
@@ -63,6 +63,7 @@ public class View {
 				break;
 			}
 		}
+		scanner.close();
 	}
 
 	private static String getCommand(Square user, Square villain, List<String> possibleCommands) {
